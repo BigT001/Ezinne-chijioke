@@ -15,38 +15,75 @@ const Header = () => {
 
       // Update active section based on scroll position
       const sections = document.querySelectorAll('section[id]')
-      const scrollPosition = window.scrollY + 100
+      const scrollPosition = window.scrollY + window.innerHeight / 3
 
+      let currentSection = ''
       sections.forEach((section) => {
         const sectionTop = (section as HTMLElement).offsetTop
         const sectionHeight = (section as HTMLElement).offsetHeight
         const sectionId = section.getAttribute('id') || ''
 
         if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-          setActiveSection('#' + sectionId)
+          currentSection = '#' + sectionId
         }
       })
+
+      if (currentSection !== activeSection) {
+        setActiveSection(currentSection)
+        // Update URL hash without scrolling
+        if (currentSection) {
+          window.history.replaceState(null, '', currentSection)
+        }
+      }
     }
 
     window.addEventListener('scroll', handleScroll)
+    handleScroll() // Check initial position
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [activeSection])
 
   const navItems = [
-    { name: 'About', href: '#about' },
-    { name: 'Experience', href: '#experience' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Contact', href: '#contact' }
+    { name: 'About', href: '#about', component: 'about' },
+    { name: 'Experience', href: '#experience', component: 'experience' },
+    { name: 'Skills', href: '#skills', component: 'skills' },
+    { name: 'Projects', href: '#projects', component: 'projects' },
+    { name: 'Contact', href: '#contact', component: 'contact' }
   ]
 
   const scrollToSection = (sectionId: string) => {
+    // Close mobile menu first
     setIsOpen(false)
-    const element = document.querySelector(sectionId)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    }
+    
+    // Small delay to allow menu closing animation
+    setTimeout(() => {
+      const element = document.querySelector(sectionId)
+      if (element) {
+        const headerHeight = 80 // Height of fixed header
+        const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
+        const offsetPosition = elementPosition - headerHeight
+
+        // Smooth scroll to section
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        })
+
+        // Update active section
+        setActiveSection(sectionId)
+      }
+    }, 100) // 100ms delay
   }
+
+  // Handle initial hash in URL
+  useEffect(() => {
+    const hash = window.location.hash
+    if (hash && navItems.some(item => item.href === hash)) {
+      // Wait for components to mount
+      setTimeout(() => {
+        scrollToSection(hash)
+      }, 500)
+    }
+  }, [])
 
   return (
     <header 
@@ -78,12 +115,16 @@ const Header = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-2">
             {navItems.map((item, index) => (
-              <motion.button
+              <motion.a
                 key={item.name}
+                href={item.href}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                onClick={() => scrollToSection(item.href)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection(item.href);
+                }}
                 className={`relative px-5 py-3 text-base font-medium transition-all duration-300 rounded-lg group ${
                   activeSection === item.href 
                     ? 'text-white bg-white/10' 
@@ -97,7 +138,7 @@ const Header = () => {
                   whileHover={{ scale: 1, opacity: 1 }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 />
-              </motion.button>
+              </motion.a>
             ))}
           </div>
 
@@ -143,24 +184,30 @@ const Header = () => {
               className="md:hidden overflow-hidden"
             >
               <motion.div 
-                className="py-4 px-2 space-y-1 backdrop-blur-lg bg-black/40 mt-4 rounded-2xl border border-white/10"
+                className="py-4 px-2 space-y-1 backdrop-blur-lg bg-black/80 mt-4 rounded-2xl border border-white/10"
                 variants={{
                   open: {
                     opacity: 1,
                     y: 0,
-                    transition: { staggerChildren: 0.07, delayChildren: 0.2 }
+                    transition: { staggerChildren: 0.05, delayChildren: 0.1 }
                   },
                   closed: {
                     opacity: 0,
-                    y: 20,
+                    y: -10,
                     transition: { staggerChildren: 0.05, staggerDirection: -1 }
                   }
                 }}
               >
                 {navItems.map((item) => (
-                  <motion.button
+                  <motion.a
                     key={item.name}
-                    onClick={() => scrollToSection(item.href)}
+                    href={item.href}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      // Explicitly close menu and scroll
+                      setIsOpen(false);
+                      scrollToSection(item.href);
+                    }}
                     className={`block w-full text-left px-5 py-4 rounded-lg transition-all duration-300 relative group text-base ${
                       activeSection === item.href 
                         ? 'text-white bg-white/10' 
@@ -178,7 +225,7 @@ const Header = () => {
                       whileHover={{ scale: 1, opacity: 1 }}
                       transition={{ type: "spring", stiffness: 300, damping: 20 }}
                     />
-                  </motion.button>
+                  </motion.a>
                 ))}
               </motion.div>
             </motion.div>
