@@ -134,12 +134,13 @@ const About = () => {
                 }}
               >
                 <Image
-                  src="/images/ezinne.jpg"
+                  src="/images/ezinne.png"
                   alt="Ezinne Chijioke - Product Designer"
                   width={1200}
                   height={1500}
                   className="w-full h-full object-cover"
                   priority
+                  quality={100}
                   style={{
                     objectPosition: '50% 20%' // More focused on face area
                   }}
