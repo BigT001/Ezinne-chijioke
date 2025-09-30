@@ -18,30 +18,45 @@ const Experience = () => {
       id="experience"
       ref={containerRef}
       style={{ opacity }}
-      className="bg-gradient-to-b from-black via-blue-950/50 to-black text-white py-12 sm:py-16 md:py-24 px-3 sm:px-6 md:px-8 relative overflow-hidden"
+      className="bg-[#000000] text-white py-12 sm:py-16 md:py-24 px-3 sm:px-6 md:px-8 relative overflow-hidden"
     >
-      {/* Background Elements */}
+      {/* Base black background */}
+      <div className="absolute inset-0 bg-[#000000]" />
+      
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#000000] via-[#0A1A4D]/50 to-[#000000]" />
+      
+      {/* Grid pattern with controlled opacity */}
       <motion.div 
         style={{ scale }}
-        className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-5" 
+        className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-[0.07]" 
       />
-      <div className="absolute inset-0 bg-gradient-to-tr from-blue-900/30 via-transparent to-purple-900/20" />
+      
+      {/* Rich gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-tr from-[#0A1A4D]/30 via-transparent to-[#4A1A8B]/20" />
+      
+      {/* Top glow effect */}
       <motion.div 
         animate={{ 
           y: [-20, 0, -20],
-          opacity: [0.1, 0.2, 0.1] 
+          opacity: [0.15, 0.25, 0.15] 
         }}
         transition={{
           duration: 5,
           repeat: Infinity,
           ease: "easeInOut"
         }}
-        className="absolute top-0 right-0 w-1/2 h-1/2 bg-blue-900/20 rounded-full blur-[120px] -translate-y-1/2"
+        className="absolute top-0 right-0 w-1/2 h-1/2 rounded-full -translate-y-1/2"
+        style={{
+          background: 'radial-gradient(circle, rgba(10,26,77,0.3) 0%, rgba(10,26,77,0.1) 70%, rgba(10,26,77,0) 100%)',
+          filter: 'blur(120px)'
+        }}
       />
+      {/* Bottom glow effect */}
       <motion.div 
         animate={{ 
           y: [20, 0, 20],
-          opacity: [0.1, 0.2, 0.1] 
+          opacity: [0.15, 0.25, 0.15] 
         }}
         transition={{
           duration: 5,
@@ -49,7 +64,11 @@ const Experience = () => {
           ease: "easeInOut",
           delay: 2.5
         }}
-        className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-purple-900/20 rounded-full blur-[120px] translate-y-1/2"
+        className="absolute bottom-0 left-0 w-1/2 h-1/2 rounded-full translate-y-1/2"
+        style={{
+          background: 'radial-gradient(circle, rgba(74,26,139,0.3) 0%, rgba(74,26,139,0.1) 70%, rgba(74,26,139,0) 100%)',
+          filter: 'blur(120px)'
+        }}
       />
       
       <div className="max-w-6xl mx-auto flex flex-col items-center relative">

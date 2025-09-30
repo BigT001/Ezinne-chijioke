@@ -47,15 +47,15 @@ const Skills = () => {
         <div className="flex flex-col items-center">
           {/* Expertise Label */}
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: false }}
-            className="mb-16 text-center"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.4 }}
+            viewport={{ once: true }}
+            className="mb-12 sm:mb-16 text-center"
           >
             <motion.span 
-              whileHover={{ scale: 1.05 }}
-              className="inline-block bg-gradient-to-r from-white to-gray-300 px-6 py-2 rounded-full text-sm font-semibold tracking-wider text-black shadow-lg"
+              whileHover={{ scale: 1.02 }}
+              className="inline-block bg-white px-5 py-1.5 sm:px-6 sm:py-2 rounded-full text-sm font-semibold tracking-wider text-black shadow-md"
             >
               EXPERTISE
             </motion.span>
@@ -63,46 +63,43 @@ const Skills = () => {
 
           {/* Heading and Subtext */}
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            viewport={{ once: false }}
-            className="mb-24 text-center"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.4 }}
+            viewport={{ once: true }}
+            className="mb-16 sm:mb-20 text-center"
           >
-            <h2 className="text-6xl md:text-7xl font-bold mb-8 bg-gradient-to-b from-white to-white/80 bg-clip-text text-transparent">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 sm:mb-8 text-white">
               Skills
             </h2>
-            <p className="text-xl md:text-2xl text-white/70 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg sm:text-xl md:text-2xl text-white/70 max-w-2xl mx-auto leading-relaxed">
               Technical and soft skills I&apos;ve developed throughout my career.
             </p>
           </motion.div>
 
           {/* Skills Cloud */}
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            viewport={{ once: false }}
-            className="w-full flex flex-wrap justify-center gap-3 md:gap-4 max-w-5xl mx-auto px-4"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="w-full flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 max-w-5xl mx-auto px-4"
           >
             {skills.map((skill, index) => (
               <motion.div
                 key={skill}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
                 transition={{ 
-                  duration: 0.5, 
-                  delay: index * 0.05,
-                  type: "spring",
-                  stiffness: 100
+                  duration: 0.3,
+                  delay: index * 0.03
                 }}
-                viewport={{ once: false }}
+                viewport={{ once: true }}
                 whileHover={{ 
-                  scale: 1.05,
-                  y: -2,
+                  scale: 1.02,
                   transition: { duration: 0.2 }
                 }}
-                className="relative px-6 py-3 rounded-full text-base md:text-lg font-medium text-white/90 hover:text-white transition-all duration-300 backdrop-blur-sm group border border-white/10 hover:border-white/30"
+                className="relative px-4 sm:px-5 py-2 sm:py-3 rounded-full text-sm sm:text-base md:text-lg font-medium text-white/90 hover:text-white transition-colors duration-200 backdrop-blur-sm group border border-white/10 hover:border-white/20"
               >
                 <div className="absolute inset-0 rounded-full bg-gradient-to-r from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
                 <div className="relative z-10">{skill}</div>

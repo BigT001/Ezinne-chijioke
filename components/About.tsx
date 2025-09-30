@@ -22,23 +22,23 @@ const About = () => {
     <motion.section 
       ref={containerRef}
       id="about" 
-      className="text-white relative py-16 sm:py-20 px-4 sm:px-6 md:px-8"
+      className="text-white relative py-16 sm:py-20 px-0 sm:px-6 md:px-8 bg-black"
       style={{ opacity }}
     >
       {/* Background gradient effects */}
       <motion.div 
-        className="absolute inset-0"
+        className="absolute inset-0 bg-black"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 1 }}
       />
       
       <motion.div 
-        className="container mx-auto px-4"
+        className="container mx-auto px-0 sm:px-4"
         style={{ scale }}
       >
         <motion.div 
-          className="relative backdrop-blur-lg bg-blue-900/30 rounded-3xl overflow-hidden border border-blue-400/10 shadow-2xl"
+          className="relative backdrop-blur-lg bg-blue-900/30 rounded-none sm:rounded-3xl overflow-hidden border-0 sm:border sm:border-blue-400/10 shadow-2xl"
             initial={{ opacity: 0, y: 100 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -46,7 +46,7 @@ const About = () => {
           >
             <div className="flex flex-col-reverse md:flex-row min-h-[600px]">
             {/* Content Section */}
-            <div className="w-full md:w-1/2 p-8 md:p-12 lg:p-16 space-y-6 relative">
+            <div className="w-full md:w-1/2 p-4 sm:p-8 md:p-12 lg:p-16 space-y-6 relative">
               {/* Decorative element */}
               <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-blue-400/20 to-blue-600/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
               

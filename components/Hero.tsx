@@ -1,6 +1,5 @@
 'use client'
 
-import Link from 'next/link'
 import { motion, useScroll, useTransform, useSpring, useAnimate } from 'framer-motion'
 import { useRef, useEffect } from 'react'
 
@@ -25,21 +24,31 @@ const Hero = () => {
     <motion.section 
       ref={ref}
       id="hero" 
-      className="min-h-screen flex flex-col bg-black text-white relative overflow-hidden pt-16 md:pt-20"
+      className="min-h-screen flex flex-col bg-[#000000] text-white relative overflow-hidden pt-16 md:pt-20"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
     >
+      {/* Solid Background */}
+      <div className="absolute inset-0 bg-[#000000]" />
+      
       {/* Background Elements */}
       <motion.div 
-        className="absolute inset-0 bg-[url('/grid.svg')] bg-center"
+        className="absolute inset-0 bg-[url('/grid.svg')] bg-center bg-repeat"
         style={{
           opacity: useTransform(smoothProgress, [0, 1], [0.1, 0.05]),
           y: backgroundY
         }}
       />
+      
+      {/* Top gradient */}
       <motion.div 
-        className="absolute top-0 right-0 w-1/2 md:w-1/3 h-1/3 bg-[#0A1A4D] rounded-full blur-[120px] -translate-y-1/2"
+        className="absolute top-0 right-0 w-1/2 md:w-1/3 h-1/3 rounded-full -translate-y-1/2"
+        style={{
+          background: 'radial-gradient(circle, rgba(10,26,77,1) 0%, rgba(10,26,77,0.3) 70%, rgba(10,26,77,0) 100%)',
+          filter: 'blur(120px)',
+          opacity: useTransform(smoothProgress, [0, 0.5], [1, 0.6])
+        }}
         animate={{ 
           y: [0, -20, 0],
           scale: [1, 1.1, 1],
@@ -50,12 +59,16 @@ const Hero = () => {
           repeatType: "reverse",
           ease: "easeInOut"
         }}
+      />
+      
+      {/* Bottom gradient */}
+      <motion.div 
+        className="absolute bottom-0 left-0 w-1/2 md:w-1/3 h-1/3 rounded-full translate-y-1/2"
         style={{
+          background: 'radial-gradient(circle, rgba(10,26,77,1) 0%, rgba(10,26,77,0.3) 70%, rgba(10,26,77,0) 100%)',
+          filter: 'blur(120px)',
           opacity: useTransform(smoothProgress, [0, 0.5], [1, 0.6])
         }}
-      />
-      <motion.div 
-        className="absolute bottom-0 left-0 w-1/2 md:w-1/3 h-1/3 bg-[#0A1A4D] rounded-full blur-[120px] translate-y-1/2"
         animate={{ 
           y: [0, 20, 0],
           scale: [1, 1.1, 1],
@@ -66,9 +79,6 @@ const Hero = () => {
           repeatType: "reverse",
           ease: "easeInOut",
           delay: 1
-        }}
-        style={{
-          opacity: useTransform(smoothProgress, [0, 0.5], [1, 0.6])
         }}
       />
       
@@ -159,18 +169,18 @@ const Hero = () => {
                   whileTap={{ scale: 0.95 }}
                   transition={{ type: "spring", stiffness: 400, damping: 17 }}
                 >
-                  <Link 
+                  <a 
                     href="#contact"
-                    className="group relative bg-[#14213D] text-white px-8 py-3 rounded-lg text-lg overflow-hidden"
+                    className="group relative bg-[#14213D] text-white px-8 py-3 rounded-lg text-lg overflow-hidden shadow-lg shadow-blue-900/20"
                   >
                     <motion.span 
-                      className="absolute inset-0 bg-[#1C2B4A] transform origin-left"
+                      className="absolute inset-0 bg-gradient-to-r from-[#1C2B4A] to-[#2A3B5A] transform origin-left"
                       initial={{ scaleX: 0 }}
                       whileHover={{ scaleX: 1 }}
                       transition={{ duration: 0.3 }}
                     />
                     <span className="relative z-10">Hire Me</span>
-                  </Link>
+                  </a>
                 </motion.div>
                 
                 <motion.div
@@ -180,11 +190,11 @@ const Hero = () => {
                 >
                   <a 
                     href="/CV/Ezinne.pdf"
-                    className="group relative bg-white text-black px-8 py-3 rounded-lg text-lg overflow-hidden inline-block"
+                    className="group relative bg-white text-[#14213D] px-8 py-3 rounded-lg text-lg overflow-hidden inline-block shadow-lg shadow-blue-900/10"
                     download
                   >
                     <motion.span 
-                      className="absolute inset-0 bg-gray-100 transform origin-left"
+                      className="absolute inset-0 bg-gradient-to-r from-gray-100 to-gray-200 transform origin-left"
                       initial={{ scaleX: 0 }}
                       whileHover={{ scaleX: 1 }}
                       transition={{ duration: 0.3 }}
