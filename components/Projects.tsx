@@ -178,39 +178,39 @@ const Projects = () => {
               <div className="absolute -inset-[1px] bg-gradient-to-br from-white/50 via-blue-300/30 to-transparent rounded-[24px] opacity-30 group-hover:opacity-70 blur-[3px] transition-all duration-500 animate-shine"></div>
               <div className="absolute -inset-[3px] bg-gradient-to-tl from-indigo-500/30 via-purple-500/20 to-transparent rounded-[24px] opacity-20 group-hover:opacity-60 blur-[4px] transition-all duration-700"></div>
               
-              <div className="relative bg-[#0A0A0A]/90 rounded-3xl overflow-hidden p-6 backdrop-blur-xl border border-white/10 shadow-[0_0_15px_rgba(59,130,246,0.1)]">
-                <div className="flex flex-col md:flex-row gap-6 h-[380px]">
+              <div className="relative bg-[#0A0A0A]/90 rounded-2xl sm:rounded-3xl overflow-hidden p-3 sm:p-4 md:p-6 backdrop-blur-xl border border-white/10 shadow-[0_0_15px_rgba(59,130,246,0.1)]">
+                <div className="flex flex-col md:flex-row gap-4 sm:gap-6 md:h-[380px]">
                   <motion.div 
-                    className="w-full md:w-1/2 space-y-4"
+                    className="w-full md:w-1/2 space-y-3 sm:space-y-4 order-2 md:order-1"
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.3 }}
                   >
                     {/* CASE STUDY Label */}
                     <div className="mb-3">
-                      <span className="text-base text-blue-300 font-medium tracking-wider">
+                      <span className="text-sm sm:text-base text-blue-300 font-medium tracking-wider">
                         CASE STUDY
                       </span>
                     </div>
 
-                    <h3 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent mb-4">
+                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent mb-4">
                       {project.title}
                     </h3>
                     
                     {/* Tags */}
-                    <div className="flex flex-wrap gap-3">
+                    <div className="flex flex-wrap gap-2 sm:gap-3 mb-4">
                       {project.tags.map((tag, tagIndex) => (
                         <motion.span 
                           key={tagIndex}
                           whileHover={{ scale: 1.05, y: -2 }}
-                          className="bg-gradient-to-r from-blue-500/10 to-purple-500/10 px-4 py-2 rounded-full text-base font-medium border border-white/10 shadow-lg backdrop-blur-sm"
+                          className="bg-gradient-to-r from-blue-500/10 to-purple-500/10 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-sm sm:text-base font-medium border border-white/10 shadow-lg backdrop-blur-sm"
                         >
                           {tag}
                         </motion.span>
                       ))}
                     </div>
 
-                    <p className="text-gray-300 text-base md:text-lg leading-relaxed">
+                    <p className="text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed line-clamp-3 sm:line-clamp-none">
                       {project.description}
                     </p>
 
@@ -236,12 +236,14 @@ const Projects = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.3 }}
                   >
-                    <div className="relative overflow-hidden rounded-xl h-full">
+                    <div className="relative overflow-hidden rounded-xl h-[250px] sm:h-[300px] md:h-full">
                       <Image
                         src={project.image}
                         alt={project.title}
                         fill
-                        className="object-cover transform group-hover:scale-105 transition-transform duration-500"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className="object-cover object-center transform group-hover:scale-105 transition-transform duration-500"
+                        priority
                       />
                     </div>
                   </motion.div>
