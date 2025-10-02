@@ -5,7 +5,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear()
   
   return (
-    <footer className="bg-black text-white py-8 relative overflow-hidden mt-20">
+    <footer className="bg-black text-white pt-4 pb-8 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:radial-gradient(white,transparent_85%)] opacity-[0.02]" />
       

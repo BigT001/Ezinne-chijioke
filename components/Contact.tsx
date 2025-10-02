@@ -7,7 +7,7 @@ const Contact = () => {
   return (
     <section 
       id="contact" 
-      className="bg-[#000000] text-white py-16 sm:py-24 md:py-32 px-4 sm:px-6 md:px-8 relative overflow-hidden"
+      className="bg-[#000000] text-white pt-16 pb-8 sm:pt-24 sm:pb-12 md:pt-32 md:pb-16 px-4 sm:px-6 md:px-8 relative overflow-hidden"
     >
       {/* Base black background */}
       <div className="absolute inset-0 bg-[#000000]" />
