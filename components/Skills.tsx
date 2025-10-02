@@ -47,14 +47,14 @@ const Skills = () => {
         <div className="flex flex-col items-center">
           {/* Expertise Label */}
           <motion.div 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.4 }}
-            viewport={{ once: true }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ margin: "-50px" }}
             className="mb-12 sm:mb-16 text-center"
           >
             <motion.span 
-              whileHover={{ scale: 1.02 }}
+              whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
               className="inline-block bg-white px-5 py-1.5 sm:px-6 sm:py-2 rounded-full text-sm font-semibold tracking-wider text-black shadow-md"
             >
               EXPERTISE
@@ -63,10 +63,10 @@ const Skills = () => {
 
           {/* Heading and Subtext */}
           <motion.div 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.4 }}
-            viewport={{ once: true }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+            viewport={{ margin: "-50px" }}
             className="mb-16 sm:mb-20 text-center"
           >
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 sm:mb-8 text-white">
@@ -79,24 +79,25 @@ const Skills = () => {
 
           {/* Skills Cloud */}
           <motion.div 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
+            viewport={{ margin: "-50px" }}
             className="w-full flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 max-w-5xl mx-auto px-4"
           >
             {skills.map((skill, index) => (
               <motion.div
                 key={skill}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 transition={{ 
-                  duration: 0.3,
-                  delay: index * 0.03
+                  duration: 0.5,
+                  delay: 0.4 + (index * 0.05),
+                  ease: "easeOut"
                 }}
-                viewport={{ once: true }}
+                viewport={{ margin: "-50px" }}
                 whileHover={{ 
-                  scale: 1.02,
+                  scale: 1.05,
                   transition: { duration: 0.2 }
                 }}
                 className="relative px-4 sm:px-5 py-2 sm:py-3 rounded-full text-sm sm:text-base md:text-lg font-medium text-white/90 hover:text-white transition-colors duration-200 backdrop-blur-sm group border border-white/10 hover:border-white/20"

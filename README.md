@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ezinne Chijioke - Portfolio Website
 
-## Getting Started
+A modern, responsive portfolio website showcasing my work as a Product Designer. Built with Next.js and Tailwind CSS.
 
-First, run the development server:
+## 🚀 Live Demo
 
+[Visit Website](https://ezinne-chijioke.vercel.app/)
+
+## 💻 Technologies Used
+
+- **Framework:** Next.js 14 (React)
+- **Styling:** Tailwind CSS
+- **Deployment:** Vercel
+- **Icons:** Lucide Icons
+- **Images:** Next.js Image Optimization
+
+## 🛠️ Features
+
+- Responsive design that works on all devices
+- Clean and modern UI
+- Dark theme
+- Optimized images
+- Fast loading times
+- Sections include:
+  - Hero
+  - About
+  - Experience
+  - Skills
+  - Projects
+  - Contact
+
+## 🏃‍♀️ Running Locally
+
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/BigT001/Ezinne-chijioke.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Navigate to the project directory:
+```bash
+cd ezinne-web
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Install dependencies:
+```bash
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Run the development server:
+```bash
+npm run dev
+```
 
-## Learn More
+5. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-To learn more about Next.js, take a look at the following resources:
+## 📄 License
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This project is open-source and available under the MIT License.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 👩‍💼 Contact
 
-## Deploy on Vercel
+- Email: ezinnenwanedo@gmail.com
+- LinkedIn: [Ezinne Chijioke](https://www.linkedin.com/in/chijiokefaith)
+- Instagram: [@ezinnejioke](https://www.instagram.com/ezinnejioke)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🙏 Acknowledgments
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Special thanks to all collaborators and supporters who helped make this portfolio possible.
