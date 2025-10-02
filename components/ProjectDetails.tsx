@@ -51,11 +51,11 @@ const ProjectDetails = ({ isOpen, onClose, project }: ProjectDetailsProps) => {
             {/* Close Button */}
             <motion.button
               onClick={onClose}
-              className="absolute right-4 top-4 p-2 rounded-full bg-gray-800/50 text-gray-400 hover:text-white hover:bg-gray-700/50 transition-colors backdrop-blur-sm"
+              className="fixed right-6 top-6 p-3 rounded-full bg-gray-900/90 text-white border border-gray-700 hover:bg-gray-800 hover:border-gray-600 transition-all duration-200 shadow-lg backdrop-blur-sm z-[102]"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
             >
-              <X size={24} />
+              <X size={20} strokeWidth={2.5} />
             </motion.button>
 
             {/* Project Content */}
